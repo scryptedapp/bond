@@ -1,7 +1,7 @@
 {
    "name": "@scrypted/bond",
    "description": "Bond Plugin for Scrypted",
-   "version": "0.0.1",
+   "version": "0.0.3",
    "keywords": [
       "scrypted",
       "plugin",
