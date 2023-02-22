@@ -1,0 +1,38 @@
+{
+   "name": "@scrypted/bond",
+   "description": "Bond Plugin for Scrypted",
+   "version": "0.0.1",
+   "keywords": [
+      "scrypted",
+      "plugin",
+      "bond"
+   ],
+   "scripts": {
+      "prepublishOnly": "NODE_ENV=production scrypted-webpack",
+      "prescrypted-vscode-launch": "scrypted-webpack",
+      "scrypted-vscode-launch": "scrypted-deploy-debug",
+      "scrypted-deploy-debug": "scrypted-deploy-debug",
+      "scrypted-debug": "scrypted-debug",
+      "scrypted-deploy": "scrypted-deploy",
+      "scrypted-readme": "scrypted-readme",
+      "scrypted-package-json": "scrypted-package-json",
+      "scrypted-webpack": "scrypted-webpack"
+   },
+   "scrypted": {
+      "name": "Bond Plugin",
+      "type": "DeviceProvider",
+      "interfaces": [
+         "DeviceProvider",
+         "Settings"
+      ]
+   },
+   "devDependencies": {
+      "@scrypted/sdk": "^0.2.69",
+      "@types/node": "^18.11.18"
+   },
+   "dependencies": {
+      "axios": "^0.27.2",
+      "axios-retry": "^3.4.0",
+      "webpack-bundle-analyzer": "^4.5.0"
+   }
+}
