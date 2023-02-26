@@ -74,6 +74,14 @@ export class BondApi {
     return this.action(device, Action.ToggleOpen);
   }
 
+  public open(device: BondDevice): Promise<void> {
+    return this.action(device, Action.Open);
+  }
+
+  public close(device: BondDevice): Promise<void> {
+    return this.action(device, Action.Close);
+  }
+
   // State
 
   public updateState(device: BondDevice, state: BondState): Promise<void> {

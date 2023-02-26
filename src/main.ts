@@ -22,25 +22,25 @@ class BondShade extends ScryptedDeviceBase implements Entry, EntrySensor, Refres
 
   async refresh(refreshInterface: string, userInitiated: boolean): Promise<void> {
     const state = await this.provider.api.getState(this.bondDevice.id);
-    this.entryOpen = state.open == 1
+    this.entryOpen = state.open == 1;
   }
   
   async closeEntry(): Promise<void> {
-    if (!BondDevice.hasToggleOpen) {
-      this.console.error(`[${this.name}] (${new Date().toLocaleString()}) Device with id ${this.bondDevice.id} does not have required ToggleOpen action.`);
-      return
+    if (!BondDevice.hasOpenClose) {
+      this.console.error(`[${this.name}] (${new Date().toLocaleString()}) Device with id ${this.bondDevice.id} does not have required Open & Close actions.`);
+      return;
     }
-    await this.provider.api.toggleOpen(this.bondDevice);
-    this.entryOpen = false
+    await this.provider.api.close(this.bondDevice);
+    await this.refresh(null, true);
   }
   
   async openEntry(): Promise<void> {
-    if (!BondDevice.hasToggleOpen) {
-      this.console.error(`[${this.name}] (${new Date().toLocaleString()}) Device with id ${this.bondDevice.id} does not have required ToggleOpen action.`);
-      return
+    if (!BondDevice.hasOpenClose) {
+      this.console.error(`[${this.name}] (${new Date().toLocaleString()}) Device with id ${this.bondDevice.id} does not have required Open & Close actions.`);
+      return;
     }
-    await this.provider.api.toggleOpen(this.bondDevice);
-    this.entryOpen = true
+    await this.provider.api.open(this.bondDevice);
+    await this.refresh(null, true);
   }
 }
 
